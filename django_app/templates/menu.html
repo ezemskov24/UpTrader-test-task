@@ -1,0 +1,12 @@
+{% load draw_menu %}
+
+<ul class="menu">
+  {% for item in menu_tree %}
+    <li>
+      <a href="{{ item.item.url }}">{{ item.item.name }}</a>
+      {% if item.children %}
+        {% include 'menu.html' with menu_tree=item.children %}
+      {% endif %}
+    </li>
+  {% endfor %}
+</ul>
